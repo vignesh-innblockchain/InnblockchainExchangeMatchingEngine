@@ -1,6 +1,6 @@
 {
   "name": "innblockchain-exchange-matching-engine",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A Light Weight Matching Engine for Crypto Exchange",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
