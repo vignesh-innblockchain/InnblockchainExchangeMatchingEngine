@@ -5,13 +5,13 @@ A Light Weight Matching Engine for Crypto Exchange
 
 ## Installation
 ```shell
-$ npm i exchange-macthing-engine --save 
+$ npm i innblockchain-exchange-matching-engine --save 
 ```
 
 ## Usage
 ```js
 
-import { MatchingEngine, OrderSide } from 'exchange-macthing-engine';
+import { MatchingEngine, OrderSide } from 'innblockchain-exchange-matching-engine';
 
 const matchingEngine = new MatchingEngine();
 
