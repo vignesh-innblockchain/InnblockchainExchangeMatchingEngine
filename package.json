@@ -1,0 +1,44 @@
+{
+  "name": "innblockchain-exchange-matching-engine",
+  "version": "1.0.0",
+  "description": "A Light Weight Matching Engine for Crypto Exchange",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "prepublish": "npm run build",
+    "build": "tsc",
+    "test": "mocha --reporter spec --compilers ts:ts-node/register 'test/**/*.spec.ts'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vignesh-innblockchain/InnblockchainExchangeMatchingEngine.git"
+  },
+  "keywords": [
+    "innblockchain",
+    "exchange",
+    "matching",
+    "engine",
+    "limit",
+    "order",
+    "market",
+    "trade"
+  ],
+  "author": "Vignesh Palanivel",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/vignesh-innblockchain/InnblockchainExchangeMatchingEngine/issues"
+  },
+  "homepage": "https://github.com/vignesh-innblockchain/InnblockchainExchangeMatchingEngine#readme",
+  "files": [
+    "dist/index.js",
+    "dist/index.d.ts"
+  ],
+  "devDependencies": {
+    "@types/chai": "4.1.6",
+    "@types/mocha": "5.2.5",
+    "chai": "4.2.0",
+    "mocha": "5.2.0",
+    "ts-node": "7.0.1",
+    "typescript": "3.1.1"
+  }
+}
