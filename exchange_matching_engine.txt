@@ -1,0 +1,96 @@
+Package usage:
+
+1. Visit the site - https://www.npmjs.com/package/exchange-macthing-engine
+
+2. Run the npm install command "npm i exchange-macthing-engine" to install the latest version of the package.
+
+3. After installation import the package in the required file using the below ES6 import statement.
+      import { MatchingEngine, OrderSide } from 'exchange-macthing-engine';
+
+4. Create instance for exchange matching engine using the below line.
+    const matchingEngine = new MatchingEngine()
+
+Order Creation:
+
+1. After creating the matching engine instance,
+use the const variable "matchingEngine"(which carries the matching engine instance)
+to call the predefined function "newOrder()" to create a new order.
+
+2. The "newOrder()" function accepts four parameters.
+    1st parameter (string): "Instrument" - Used to classify the varies types of orders.
+    2nd parameter (number): "Price" - Price of the new order.
+    3rd parameter (number): "Quantity" - Holds the quantity of the order.
+    4th parameter (string enum): "Side" - Used to differentiate between the trade sides.
+        This parameter accepts only "buy" side or "sell" side to create a order.
+        Note: Other than "buy" or "sell" side the engine will return a error response as "Invalid Order Side".
+
+    Example for buy order: matchingEngine.newOrder('ETH/BTC', 0.070214, 0.0614, "buy");
+    Response:
+    {
+        "status": true,
+        "statusCode": 1,
+        "message": "Order Placed",
+        "data": {
+            "order": {
+                "cumQty": 0,
+                "orderId": 1,
+                "instrument": "LTC/BTC",
+                "price": 0.070214,
+                "qty": 0.0614,
+                "side": 0,
+                "leavesQty": 0.0614
+            },
+            "trades": []
+        }
+    }
+    Example for sell order: matchingEngine.newOrder('ETH/BTC', 0.070213, 0.0787, "sell");
+    Response:
+    {
+         "status": true,
+         "statusCode": 1,
+         "message": "Order Placed",
+         "data": {
+              "order": {
+                   "cumQty": 0.0614,
+                   "orderId": 2,
+                   "instrument": "LTC/BTC",
+                   "price": 0.070213,
+                   "qty": 0.0787,
+                   "side": 1,
+                   "leavesQty": 0.017300000000000003
+              },
+              "trades": [
+                   {
+                        "orderId": 2,
+                        "instrument": "LTC/BTC",
+                        "tradePrice": 0.070214,
+                        "tradeQty": 0.0614,
+                        "tradeSide": 1,
+                        "tradeId": 1
+                   },
+                   {
+                        "orderId": 1,
+                        "instrument": "LTC/BTC",
+                        "tradePrice": 0.070214,
+                        "tradeQty": 0.0614,
+                        "tradeSide": 0,
+                        "tradeId": 2
+                   }
+              ]
+         }
+    }
+    "leavesQty" - It the remaining quantity of an order after an order is traded.
+
+Order Cancellation:
+1. To cancel an order after creating one,
+use the const variable "matchingEngine"(which carries the matching engine instance)
+and call the predefined function "cancelOrder()" to cancel an existing order.
+
+2. The "cancelOrder()" function accepts 2 parameters.
+    1st parameter (number): "Order ID" - The exact order ID which is returned from matching engine after creating a new order.
+    2nd parameter (string): "Instrument" - Used to classify the order type to cancel.
+    
+    Example to cancel an order:
+    matchingEngine.cancelOrder(1, "LTC/BTC");
+    Response:
+    { status: true, statusCode: 0, message: 'Order Cancelled' }
